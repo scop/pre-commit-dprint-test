@@ -1,0 +1,16 @@
+- id: dprint
+  name: dprint
+  description: Pluggable and configurable source code formatter (prebuilt upstream executable)
+  language: python
+  entry: dprint fmt --allow-no-files
+  require_serial: true
+  stages: [commit, merge-commit, push, manual]
+
+- id: dprint-src
+  name: dprint
+  description: Pluggable and configurable source code formatter (build from source)
+  language: rust
+  additional_dependencies: [cli:dprint:0.45.0]
+  entry: dprint fmt --allow-no-files
+  require_serial: true
+  stages: [commit, merge-commit, push, manual]
